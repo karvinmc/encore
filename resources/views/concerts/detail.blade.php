@@ -1,12 +1,12 @@
 @extends('layouts.default')
-@section('title', 'Encore | Sabrina Carpenter Tour 2025')
+@section('title', 'Encore | Music Festival 2025')
 
 @section('content')
 
   <section class="bg-white py-8 md:py-16">
     <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
       <h2 class="text-4xl tracking-tight font-bold text-black">
-        Sabrina Carpenter Tour 2025
+        Music Festival 2025
       </h2>
     </div>
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 px-4 md:px-12">
@@ -33,8 +33,8 @@
           </p>
         </div>
       </div>
-      <div class="bg-white">
-        {{-- TODO: Detail and tickets tab --}}
+      <div class="bg-gray-100">
+        {{-- TODO: Content here --}}
       </div>
     </div>
   </section>
