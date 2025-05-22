@@ -43,7 +43,10 @@
             </svg>
             <span class="text-sm text-gray-500 font-medium">All Dates</span>
           </div>
-          <i class="fa-solid fa-chevron-down text-gray-500"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+          </svg>
+
         </div>
         <div class="flex items-center gap-3 px-5 py-4 w-full border-b md:border-b-0">
           <svg
@@ -71,43 +74,139 @@
     </div>
   </section>
 
-  <section class="bg-white mx-auto sm:py-16 lg:px-6">
-    <div class="mx-auto text-center mb-8 lg:mb-16">
-      <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">
+  <section class="bg-white mx-auto py-16 lg:px-6 border-b">
+    <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-12">
+      <h2 class="text-4xl tracking-tight font-extrabold text-black">
         Popular Concerts
       </h2>
     </div>
-    <div class="concerts-card">
-      <div>
-        <a href="#">
-          <img src="{{ asset('img/concerts/placeholder.jpg') }}" class="w-full h-60 object-cover rounded" alt="">
-          <div class="p-5">
-            <h2 class="text-xl font-semibold text-gray-800">Rock Fest 2025</h2>
-            <p class="text-gray-600 mt-1">Jakarta, Indonesia</p>
-            <p class="text-gray-600">July 20, 2025</p>
-          </div>
-        </a>
-      </div>
-      <div>
-        <a href="#">
-          <img src="{{ asset('img/concerts/placeholder.jpg') }}" class="w-full h-60 object-cover rounded" alt="">
-          <div class="p-5">
-            <h2 class="text-xl font-semibold text-gray-800">Rock Fest 2025</h2>
-            <p class="text-gray-600 mt-1">Jakarta, Indonesia</p>
-            <p class="text-gray-600">July 20, 2025</p>
-          </div>
-        </a>
-      </div>
-      <div>
-        <a href="#">
-          <img src="{{ asset('img/concerts/placeholder.jpg') }}" class="w-full h-60 object-cover rounded" alt="">
-          <div class="p-5">
-            <h2 class="text-xl font-semibold text-gray-800">Rock Fest 2025</h2>
-            <p class="text-gray-600 mt-1">Jakarta, Indonesia</p>
-            <p class="text-gray-600">July 20, 2025</p>
-          </div>
-        </a>
+    <div class="mx-auto px-5 text-end">
+      <a href="{{ url('/concerts') }}" class="text-sky-600 hover:underline">See all concerts</a>
+    </div>
+    <div class="relative mx-auto">
+      <div class="concert-cards">
+        {{-- Item 1 --}}
+        <div class="p-5">
+          <a href="{{ url('/concerts/detail') }}" class="block group">
+            <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
+              <img
+                   src="{{ asset('img/concerts/placeholder.jpg') }}"
+                   alt="Concert image"
+                   class="w-full h-full object-cover" />
+            </div>
+            <div class="pt-4">
+              <h2 class="text-xl font-semibold text-black group-hover:text-sky-600 transition-colors duration-200">
+                Music Festival 2025
+              </h2>
+              <p class="text-gray-600 mt-1">Jakarta, Indonesia</p>
+              <p class="text-gray-600">July 20, 2025</p>
+            </div>
+          </a>
+        </div>
+        {{-- Item 2 --}}
+        <div class="p-5">
+          <a href="{{ url('/concerts/detail') }}" class="block group">
+            <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
+              <img
+                   src="{{ asset('img/concerts/placeholder2.jpg') }}"
+                   alt="Concert image"
+                   class="w-full h-full object-cover" />
+            </div>
+            <div class="pt-4">
+              <h2 class="text-xl font-semibold text-black group-hover:text-sky-600 transition-colors duration-200">
+                Music Festival 2025
+              </h2>
+              <p class="text-gray-600 mt-1">Jakarta, Indonesia</p>
+              <p class="text-gray-600">July 20, 2025</p>
+            </div>
+          </a>
+        </div>
+        {{-- Item 3 --}}
+        <div class="p-5">
+          <a href="{{ url('/concerts/detail') }}" class="block group">
+            <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
+              <img
+                   src="{{ asset('img/concerts/placeholder.jpg') }}"
+                   alt="Concert image"
+                   class="w-full h-full object-cover" />
+            </div>
+            <div class="pt-4">
+              <h2 class="text-xl font-semibold text-black group-hover:text-sky-600 transition-colors duration-200">
+                Music Festival 2025
+              </h2>
+              <p class="text-gray-600 mt-1">Jakarta, Indonesia</p>
+              <p class="text-gray-600">July 20, 2025</p>
+            </div>
+          </a>
+        </div>
+        {{-- Item 4 --}}
+        <div class="p-5">
+          <a href="{{ url('/concerts/detail') }}" class="block group">
+            <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
+              <img
+                   src="{{ asset('img/concerts/placeholder2.jpg') }}"
+                   alt="Concert image"
+                   class="w-full h-full object-cover" />
+            </div>
+            <div class="pt-4">
+              <h2 class="text-xl font-semibold text-black group-hover:text-sky-600 transition-colors duration-200">
+                Music Festival 2025
+              </h2>
+              <p class="text-gray-600 mt-1">Jakarta, Indonesia</p>
+              <p class="text-gray-600">July 20, 2025</p>
+            </div>
+          </a>
+        </div>
       </div>
     </div>
+  </section>
+
+  <section class="bg-white mx-auto py-16 lg:px-6 border-b">
+    <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
+      <h2 class="text-4xl tracking-tight font-extrabold text-black">
+        Articles & Updates
+      </h2>
+    </div>
+    <div class="mx-auto px-5 text-end">
+      <a href="{{ url('/concerts') }}" class="text-sky-600 hover:underline">Discover more</a>
+    </div>
+    {{-- News cards --}}
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-3">
+      <div class="p-2">
+        <a href="/concerts/detail" class="block group">
+          <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
+            <img
+                 src="{{ asset('img/concerts/placeholder.jpg') }}"
+                 alt="Concert image"
+                 class="w-full h-full object-cover" />
+          </div>
+          <div class="pt-4">
+            <p class="text-gray-600">Guide</p>
+            <h2 class="text-xl mt-1 font-semibold text-black group-hover:text-sky-600 transition-colors duration-200">
+              Get Started on Encore
+            </h2>
+            <p class="text-gray-600 mt-1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus vero, obcaecati fugit magnam ab magni?</p>
+            <p class="text-sky-600 mt-8">Read more</p>
+          </div>
+        </a>
+      </div>
+      <div class="p-2">
+        <a href="/concerts/detail" class="block group">
+          <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
+            <img
+                 src="{{ asset('img/concerts/placeholder.jpg') }}"
+                 alt="Concert image"
+                 class="w-full h-full object-cover" />
+          </div>
+          <div class="pt-4">
+            <p class="text-gray-600">Guide</p>
+            <h2 class="text-xl mt-1 font-semibold text-black group-hover:text-sky-600 transition-colors duration-200">
+              What to Bring to a Concert?
+            </h2>
+            <p class="text-gray-600 mt-1">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel debitis minus, fuga neque quis eaque quidem laborum labore est aspernatur dolores aut similique error praesentium.</p>
+            <p class="text-sky-600 mt-8">Read more</p>
+          </div>
+        </a>
+      </div>
   </section>
 @endsection

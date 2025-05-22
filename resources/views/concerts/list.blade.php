@@ -11,31 +11,35 @@
     </div>
 
     {{-- Concert cards --}}
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-12">
-      <div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-12">
+      <div class="p-2">
         <a href="/concerts/detail" class="block group">
-          <img
-               src="{{ asset('img/concerts/placeholder2.jpg') }}"
-               alt="Concert image"
-               class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300 rounded" />
+          <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
+            <img
+                 src="{{ asset('img/concerts/placeholder.jpg') }}"
+                 alt="Concert image"
+                 class="w-full h-full object-cover" />
+          </div>
           <div class="pt-4">
             <h2 class="text-xl font-semibold text-black group-hover:text-sky-600 transition-colors duration-200">
-              Sabrina Carpenter Tour 2025
+              Music Festival 2025
             </h2>
             <p class="text-gray-600 mt-1">Jakarta, Indonesia</p>
             <p class="text-gray-600">July 20, 2025</p>
           </div>
         </a>
       </div>
-      <div>
+      <div class="p-2">
         <a href="/concerts/detail" class="block group">
-          <img
-               src="{{ asset('img/concerts/placeholder2.jpg') }}"
-               alt="Concert image"
-               class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-300 rounded" />
+          <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
+            <img
+                 src="{{ asset('img/concerts/placeholder2.jpg') }}"
+                 alt="Concert image"
+                 class="w-full h-full object-cover" />
+          </div>
           <div class="pt-4">
             <h2 class="text-xl font-semibold text-black group-hover:text-sky-600 transition-colors duration-200">
-              Sabrina Carpenter Tour 2025
+              Music Festival 2025
             </h2>
             <p class="text-gray-600 mt-1">Jakarta, Indonesia</p>
             <p class="text-gray-600">July 20, 2025</p>
