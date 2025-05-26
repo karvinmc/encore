@@ -9,6 +9,7 @@
         Music Festival 2025
       </h2>
     </div>
+    {{-- TODO: Detail and ticket header --}}
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 px-4 md:px-12">
       <div class="bg-white">
         <div class="overflow-hidden">
@@ -33,8 +34,8 @@
           </p>
         </div>
       </div>
-      <div class="bg-gray-100">
-        {{-- TODO: Content here --}}
+      <div class="bg-white">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere libero alias sequi voluptate itaque qui tenetur vero dolorem dolores eligendi delectus facilis voluptatum, amet nesciunt impedit quidem autem. Animi, facilis?</p>
       </div>
     </div>
   </section>
