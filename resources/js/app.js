@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 window.$ = window.jQuery = $;
 
+// Concerts carousel - home
 $(function () {
   $(".concert-cards").slick({
     infinite: true,
@@ -33,5 +34,25 @@ $(function () {
         },
       },
     ],
+  });
+});
+
+// Navigation tab - singers.detail
+const tabButtons = document.querySelectorAll(".tab-btn");
+const tabContents = document.querySelectorAll(".tab-content");
+
+tabButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const target = btn.getAttribute("data-target");
+
+    // Toggle content visibility
+    tabContents.forEach((content) => {
+      content.classList.add("hidden");
+    });
+    document.getElementById(target).classList.remove("hidden");
+
+    // Update active tab styling
+    tabButtons.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
   });
 });

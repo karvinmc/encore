@@ -3,3 +3,8 @@
 @theme {
   --font-sans: InterVariable, sans-serif;
 }
+
+/* Custom navbar */
+.active {
+  @apply border-sky-600 text-black;
+}

@@ -14,14 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+  return view('home');
 });
 
 Route::get('/concerts', function () {
-    return view('concerts.list');
+  return view('concerts.index');
 });
 
 Route::get('/concerts/detail', function () {
-    return view('concerts.detail');
+  return view('concerts.detail');
 });
 
+Route::get('/singers/detail', function () {
+  return view('singers.detail');
+});
