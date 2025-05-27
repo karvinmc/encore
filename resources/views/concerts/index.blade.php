@@ -3,7 +3,7 @@
 
 @section('content')
 
-  <section class="bg-white mx-auto py-16 lg:px-6 border-b">
+  <section class="bg-white mx-10 py-16 lg:px-6 border-b border-gray-400">
     <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
       <h2 class="text-4xl tracking-tight font-extrabold text-black">
         Trending Now
@@ -47,17 +47,13 @@
     </div>
   </section>
 
-  {{-- Filter --}}
-  <section class="bg-white text-black sticky top-0 z-50 shadow-lg">
+  <section class="bg-white mx-10 pt-16 lg:px-6">
     <div class="max-w-7xl mx-auto px-4">
-      <div class="flex space-x-4 overflow-x-auto">
-        {{-- TODO: Filter function --}}
-        <h2 class="py-5 px-5">Filter function here</h2>
-      </div>
+      @include('includes.filter')
     </div>
   </section>
 
-  <section class="bg-white mx-auto py-16">
+  <section class="bg-white mx-10 py-16">
     <div class="mx-auto max-w-screen-sm text-center mb-8 lg:mb-16">
       <h2 class="text-4xl tracking-tight font-extrabold text-black mb-1">
         Upcoming Concerts
