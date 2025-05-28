@@ -15,7 +15,7 @@
     <div id="nav-menu" class="hidden md:flex flex-col md:flex-row items-center md:space-x-4 absolute md:static top-full left-0 w-full md:w-auto bg-black md:bg-transparent z-50 shadow-md md:shadow-none p-4 md:p-0 transition-all">
       <a href="{{ url('/') }}" class="py-2 px-3 block transition">Home</a>
       <a href="{{ url('/concerts') }}" class="py-2 px-3 block">Concerts</a>
-      <a href="{{ url('#') }}" class="py-2 px-3 block">About</a>
+      <a href="{{ url('#') }}" class="py-2 px-3 block">Blog</a>
       <a href="#" class="block md:hidden mt-2 py-4 px-3 text-white">Sign in</a>
     </div>
 

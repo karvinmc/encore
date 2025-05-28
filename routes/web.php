@@ -21,8 +21,8 @@ Route::get('/concerts', function () {
   return view('concerts.index');
 });
 
-Route::get('/concerts/detail', function () {
-  return view('concerts.detail');
+Route::get('/concerts/book', function () {
+  return view('concerts.book');
 });
 
 Route::get('/singers/detail', function () {
