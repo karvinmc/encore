@@ -17,18 +17,6 @@
   <section class="bg-white py-8 md:py-16">
     <div class="mx-auto max-w-6xl mb-8 lg:mb-16">
       <h2 class="text-4xl tracking-tight font-bold text-black">
-        Choose Your Seat
-      </h2>
-    </div>
-
-    <div class="mx-auto max-w-6xl mb-8 lg:mb-16">
-      @include('includes.seat')
-    </div>
-  </section>
-
-  <section class="bg-white">
-    <div class="mx-auto max-w-6xl mb-8 lg:mb-16">
-      <h2 class="text-4xl tracking-tight font-bold text-black">
         Ticket Information
       </h2>
     </div>
