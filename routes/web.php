@@ -32,3 +32,11 @@ Route::get('/singers/detail', function () {
 Route::get('/payment', function () {
   return view('payment');
 });
+
+Route::get('/signin', function () {
+  return view('users.signin');
+});
+
+Route::get('/signup', function () {
+  return view('users.signup');
+});

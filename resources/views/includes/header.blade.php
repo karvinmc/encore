@@ -1,8 +1,7 @@
-<!-- Sticky Navbar -->
-<nav class="bg-black text-white sticky top-0 z-50">
+<nav class="bg-black text-white sticky md:relative top-0 z-50">
   <div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
     <!-- Logo -->
-    <a href="#" class="py-5 px-2 text-xl font-bold">Encore</a>
+    <a href="{{ url('/') }}" class="py-5 px-2 text-xl font-bold">Encore</a>
 
     <!-- Mobile menu icon -->
     <button id="menu-btn" class="md:hidden flex items-center cursor-pointer">
@@ -16,12 +15,12 @@
       <a href="{{ url('/') }}" class="py-2 px-3 block transition">Home</a>
       <a href="{{ url('/concerts') }}" class="py-2 px-3 block">Concerts</a>
       <a href="{{ url('#') }}" class="py-2 px-3 block">Blog</a>
-      <a href="#" class="block md:hidden mt-2 py-4 px-3 text-white">Sign in</a>
+      <a href="{{ url('/signin') }}" class="block md:hidden mt-2 py-4 px-3 text-white">Sign in</a>
     </div>
 
     <!-- Sign in button -->
     <div class="hidden md:flex items-center px-2">
-      <a href="#" class="py-2 px-4 rounded bg-sky-600 hover:bg-sky-500 transition text-white">Sign in</a>
+      <a href="/signin" class="py-2 px-4 rounded bg-sky-600 hover:bg-sky-500 transition text-white">Sign in</a>
     </div>
   </div>
 </nav>

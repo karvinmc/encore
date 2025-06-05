@@ -28,7 +28,7 @@
     </div>
   </section>
 
-  <section id="about" class="bg-white mx-10 py-16 lg:px-6 border-b border-gray-400">
+  <section id="concerts" class="bg-white mx-10 py-16 lg:px-6 border-b border-gray-400">
     <div class="max-w-7xl mx-auto px-4">
       <div class="flex flex-col md:flex-row items-center bg-white border border-sky-600 rounded-lg overflow-hidden w-full max-w-3xl mx-auto">
         <div class="flex items-center gap-3 px-5 py-4 border-b md:border-b-0 md:border-r w-full">
@@ -47,7 +47,7 @@
                  placeholder="City"
                  class="outline-none bg-transparent placeholder-gray-500 text-sm w-full font-medium" />
         </div>
-        <div class="flex items-center justify-between gap-3 px-5 py-4 w-full cursor-pointer hover:bg-gray-100 transition-colors">
+        <div class="flex items-center justify-between gap-3 px-5 py-4 w-full border-b md:border-b-0 cursor-pointer hover:bg-gray-100 transition-colors">
           <div class="flex items-center gap-3">
             <svg
                  xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +105,7 @@
       </div>
   </section>
 
-  <section id="concerts" class="bg-white mx-auto py-5 lg:px-6">
+  <section id="about" class="bg-white mx-10 lg:px-6">
     <div class="flex flex-col mx-auto max-w-6xl gap-10 py-16">
       <h2 class="text-2xl font-bold tracking-tight text-black">
         About
