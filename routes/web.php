@@ -28,3 +28,7 @@ Route::get('/concerts/book', function () {
 Route::get('/singers/detail', function () {
   return view('singers.detail');
 });
+
+Route::get('/payment', function () {
+  return view('payment');
+});

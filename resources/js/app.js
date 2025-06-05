@@ -36,3 +36,59 @@ $(function () {
     ],
   });
 });
+
+// Ticket selector - book.blade.php
+function updateTotals() {
+  const cards = document.querySelectorAll(".ticket-card");
+  let total = 0;
+  let totalQuantity = 0;
+
+  cards.forEach((card) => {
+    const price = parseInt(card.dataset.price);
+    const quantity = parseInt(card.querySelector(".quantity").textContent);
+    total += price * quantity;
+    totalQuantity += quantity;
+  });
+
+  const formatIDR = (num) => "IDR " + num.toLocaleString("id-ID");
+
+  document.getElementById("total").textContent = formatIDR(total);
+
+  const priceSummary = document.getElementById("price-summary");
+  const checkoutSection = document.getElementById("checkout-section");
+
+  if (totalQuantity > 0) {
+    priceSummary.classList.remove("hidden");
+    priceSummary.classList.add("flex");
+    checkoutSection.classList.remove("hidden");
+    checkoutSection.classList.add("flex");
+  } else {
+    priceSummary.classList.add("hidden");
+    priceSummary.classList.remove("flex");
+    checkoutSection.classList.add("hidden");
+    checkoutSection.classList.remove("flex");
+  }
+}
+
+// Attach event listeners to buttons
+document.querySelectorAll(".ticket-card").forEach((card) => {
+  const incrementBtn = card.querySelector(".increment");
+  const decrementBtn = card.querySelector(".decrement");
+  const quantitySpan = card.querySelector(".quantity");
+
+  incrementBtn.addEventListener("click", () => {
+    let quantity = parseInt(quantitySpan.textContent);
+    quantity++;
+    quantitySpan.textContent = quantity;
+    updateTotals();
+  });
+
+  decrementBtn.addEventListener("click", () => {
+    let quantity = parseInt(quantitySpan.textContent);
+    if (quantity > 0) quantity--;
+    quantitySpan.textContent = quantity;
+    updateTotals();
+  });
+});
+
+updateTotals();
