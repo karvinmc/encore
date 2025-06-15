@@ -40,7 +40,7 @@
       </form>
       <p class="text-sm text-center text-gray-600">
         Don't have an account?
-        <a href="/signup" class="text-sky-600 hover:underline">Sign up</a>
+        <a href="/register" class="text-sky-600 hover:underline">Sign up</a>
       </p>
     </div>
   </section>

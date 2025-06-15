@@ -68,7 +68,7 @@
 
     {{-- Checkout Button --}}
     <div id="checkout-section" class="flex max-w-6xl mx-auto justify-end items-center px-5">
-      <a href="/payment" class="bg-sky-600 rounded hover:bg-sky-500 text-white font-semibold px-4 py-2 cursor-pointer">Checkout</a>
+      <a href="{{ url('/') }}" class="bg-sky-600 rounded hover:bg-sky-500 text-white font-semibold px-4 py-2 cursor-pointer">Checkout</a>
     </div>
   </section>
 

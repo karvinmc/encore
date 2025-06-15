@@ -13,7 +13,7 @@
         Book your concert now!
       </h1>
 
-      @include('includes.filter')
+      @include('components.filter')
 
     </div>
   </section>
@@ -31,7 +31,7 @@
       <div class="concert-cards">
         {{-- Item 1 --}}
         <div class="p-5">
-          <a href="{{ url('/concerts/detail') }}" class="block group">
+          <a href="{{ url('/tickets/concert-name') }}" class="block group">
             <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
               <img
                    src="{{ asset('img/concerts/placeholder.jpg') }}"
@@ -49,7 +49,7 @@
         </div>
         {{-- Item 2 --}}
         <div class="p-5">
-          <a href="{{ url('/concerts/detail') }}" class="block group">
+          <a href="{{ url('/tickets/concert-name') }}" class="block group">
             <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
               <img
                    src="{{ asset('img/concerts/placeholder2.jpg') }}"
@@ -67,7 +67,7 @@
         </div>
         {{-- Item 3 --}}
         <div class="p-5">
-          <a href="{{ url('/concerts/detail') }}" class="block group">
+          <a href="{{ url('/tickets/concert-name') }}" class="block group">
             <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
               <img
                    src="{{ asset('img/concerts/placeholder.jpg') }}"
@@ -85,7 +85,7 @@
         </div>
         {{-- Item 4 --}}
         <div class="p-5">
-          <a href="{{ url('/concerts/detail') }}" class="block group">
+          <a href="{{ url('/tickets/concert-name') }}" class="block group">
             <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
               <img
                    src="{{ asset('img/concerts/placeholder2.jpg') }}"
@@ -112,12 +112,12 @@
       </h2>
     </div>
     <div class="mx-auto px-5 text-end">
-      <a href="{{ url('/concerts') }}" class="text-sky-600 hover:underline">Discover more</a>
+      <a href="{{ url('/blogs') }}" class="text-sky-600 hover:underline">Discover more</a>
     </div>
     {{-- News cards --}}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-3">
       <div class="p-2">
-        <a href="/concerts/detail" class="block group">
+        <a href="/blogs" class="block group">
           <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
             <img
                  src="{{ asset('img/concerts/placeholder.jpg') }}"
@@ -135,7 +135,7 @@
         </a>
       </div>
       <div class="p-2">
-        <a href="/concerts/detail" class="block group">
+        <a href="/blogs" class="block group">
           <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
             <img
                  src="{{ asset('img/concerts/placeholder.jpg') }}"

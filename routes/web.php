@@ -18,25 +18,29 @@ Route::get('/', function () {
 });
 
 Route::get('/concerts', function () {
-  return view('concerts.index');
+  return view(view: 'concerts.index');
 });
 
-Route::get('/concerts/book', function () {
-  return view('concerts.book');
+Route::get('/tickets/concert-name', function () {
+  return view('tickets.book');
 });
 
-Route::get('/singers/detail', function () {
-  return view('singers.detail');
+Route::get('/tickets/concert-name/confirm', function () {
+  return view('tickets.confirmation');
 });
 
-Route::get('/payment', function () {
-  return view('payment');
+Route::get('/singers', function () {
+  return view('singers.index');
 });
 
-Route::get('/signin', function () {
-  return view('users.signin');
+Route::get('/singer-name/concerts', function () {
+  return view('singers.show');
 });
 
-Route::get('/signup', function () {
-  return view('users.signup');
+Route::get('/login', function () {
+  return view('auth.login');
+});
+
+Route::get('/register', function () {
+  return view('auth.register');
 });
