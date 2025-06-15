@@ -21,10 +21,22 @@ Route::get('/concerts', function () {
   return view('concerts.index');
 });
 
-Route::get('/concerts/detail', function () {
-  return view('concerts.detail');
+Route::get('/concerts/book', function () {
+  return view('concerts.book');
 });
 
 Route::get('/singers/detail', function () {
   return view('singers.detail');
+});
+
+Route::get('/payment', function () {
+  return view('payment');
+});
+
+Route::get('/signin', function () {
+  return view('users.signin');
+});
+
+Route::get('/signup', function () {
+  return view('users.signup');
 });
