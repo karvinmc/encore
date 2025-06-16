@@ -68,11 +68,11 @@ class DatabaseSeeder extends Seeder
 
     // SINGERS
     $singers = [
-      ['name' => 'Dua Lipa', 'description' => 'English pop star', 'genre' => 'Pop'],
-      ['name' => 'Imagine Dragons', 'description' => 'American rock band', 'genre' => 'Rock'],
-      ['name' => 'Kendrick Lamar', 'description' => 'American rapper and lyricist', 'genre' => 'Hip Hop'],
-      ['name' => 'Olivia Rodrigo', 'description' => 'Pop singer-songwriter', 'genre' => 'Pop'],
-      ['name' => 'Foo Fighters', 'description' => 'American rock band', 'genre' => 'Rock'],
+      ['name' => 'Dua Lipa', 'description' => 'English pop star', 'genre' => 'Pop', 'image' => 'https://traxonsky.com/wp-content/uploads/2022/02/dualipaheadline-1.jpg'],
+      ['name' => 'Imagine Dragons', 'description' => 'American rock band', 'genre' => 'Rock', 'image' => 'https://www.rollingstone.com/wp-content/uploads/2024/06/imagine-dragons-QA.jpg?w=1581&h=1054&crop=1'],
+      ['name' => 'Kendrick Lamar', 'description' => 'American rapper and lyricist', 'genre' => 'Hip Hop', 'image' => 'https://cdn.apollo.audio/one/media/67a9/d509/21f1/f16e/4738/dd12/Kendrick-Lamar.jpg?quality=80&format=jpg&crop=0,0,2860,5078&resize=crop'],
+      ['name' => 'Olivia Rodrigo', 'description' => 'Pop singer-songwriter', 'genre' => 'Pop', 'image' => 'https://www.billboard.com/wp-content/uploads/2023/07/Olivia-Rodrigo-cr-Larissa-Hofmann-press-04-2023-billboard-1548.jpg'],
+      ['name' => 'Foo Fighters', 'description' => 'American rock band', 'genre' => 'Rock', 'image' => 'https://pasjabar.com/wp-content/uploads/2025/05/71ee7a892609a8cb9d9d94a175adc262-1024x666-1.jpg'],
     ];
 
     foreach ($singers as $singer) {
@@ -83,11 +83,11 @@ class DatabaseSeeder extends Seeder
 
     // CONCERTS
     $concerts = [
-      ['name' => 'Midnight Beats Tour', 'description' => 'A celebration of modern pop music.', 'singer' => 'Dua Lipa'],
-      ['name' => 'Rockstorm Revival', 'description' => 'Rock legends gather.', 'singer' => 'Imagine Dragons'],
-      ['name' => 'Hip Hop Heatwave', 'description' => 'A night of lyrical fire.', 'singer' => 'Kendrick Lamar'],
-      ['name' => 'Pop Paradise', 'description' => 'Fresh pop sounds.', 'singer' => 'Olivia Rodrigo'],
-      ['name' => 'Rocknation Festival', 'description' => 'Uniting ASEAN rock fans.', 'singer' => 'Foo Fighters'],
+      ['name' => 'Midnight Beats Tour', 'description' => 'A celebration of modern pop music.', 'singer' => 'Dua Lipa', 'image' => 'https://www.billboard.com/wp-content/uploads/2024/10/Dua-Lipa-cr-Elizabeth-Miranda-press-2024-billboard-1548.jpg'],
+      ['name' => 'Rockstorm Revival', 'description' => 'Rock legends gather.', 'singer' => 'Imagine Dragons', 'image' => 'https://www.roevisual.com/statics/Images/News/News%202018/nathanreinds-imaginedragons-roe-hr-1.jpg'],
+      ['name' => 'Hip Hop Heatwave', 'description' => 'A night of lyrical fire.', 'singer' => 'Kendrick Lamar', 'image' => 'https://www.billboard.com/wp-content/uploads/2022/09/kendrick-lamar-crytocom-arena-09172022-billboard-1548.jpg'],
+      ['name' => 'Pop Paradise', 'description' => 'Fresh pop sounds.', 'singer' => 'Olivia Rodrigo', 'image' => 'https://variety.com/wp-content/uploads/2024/02/CJP12613.jpg?w=1000&h=563&crop=1'],
+      ['name' => 'Rocknation Festival', 'description' => 'Uniting ASEAN rock fans.', 'singer' => 'Foo Fighters', 'image' => 'https://media.cnn.com/api/v1/images/stellar/prod/220904115014-04-taylor-hawkins-tribute-concert-0903.jpg?c=original'],
     ];
 
     $venueIds = DB::table('venues')->pluck('id')->toArray();
@@ -101,6 +101,7 @@ class DatabaseSeeder extends Seeder
         'date' => now()
           ->addDays(rand(10, 60))
           ->setTime($time[0], $time[1]),
+        'image' => $concert['image'],
         'venue_id' => $venueIds[array_rand($venueIds)],
         'created_at' => now(),
         'updated_at' => now(),
