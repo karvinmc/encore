@@ -39,7 +39,13 @@
 
     {{-- Book Button --}}
     <div id="checkout-section" class="max-w-6xl mx-auto justify-end items-center px-5 hidden">
-      <a href="{{ url('/tickets/concert-name/confirm') }}" class="bg-sky-600 rounded hover:bg-sky-500 text-white font-semibold px-4 py-2 cursor-pointer">Book</a>
+      <form method="POST" action="{{ route('tickets.confirm', [$concert->id]) }}" id="booking-form">
+        @csrf
+        <input type="hidden" name="tickets" id="selected-tickets">
+        <button type="submit" class="bg-sky-600 rounded hover:bg-sky-500 text-white font-semibold px-4 py-2 cursor-pointer">
+          Book
+        </button>
+      </form>
     </div>
   </section>
 

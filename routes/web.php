@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ConcertController;
 use App\Http\Controllers\SingerController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\BookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,12 +23,9 @@ Route::get('/', [HomeController::class, 'index']);
 Route::get('/concerts', [ConcertController::class, 'index']);
 
 Route::get('/concerts/singer/{id}', [SingerController::class, 'show']);
-
 Route::get('/tickets/{id}/book', [TicketController::class, 'show']);
-
-Route::get('/tickets/concert-name/confirm', function () {
-  return view('tickets.confirmation');
-});
+Route::post('/tickets/{id}/confirm', [TicketController::class, 'confirm'])->name('tickets.confirm');
+Route::post('/checkout/{id}', [BookingController::class, 'store'])->name('checkout.store');
 
 Route::get('/login', function () {
   return view('auth.login');

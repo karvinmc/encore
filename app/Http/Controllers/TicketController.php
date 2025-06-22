@@ -51,6 +51,16 @@ class TicketController extends Controller
     ]);
   }
 
+  public function confirm(Request $request, $id)
+  {
+    $concert = Concert::with('venue')->findOrFail($id);
+    $selectedTickets = json_decode($request->input('tickets'), true);
+
+    return view('tickets.confirmation', compact('concert', 'selectedTickets'));
+  }
+
+  public function book() {}
+
   /**
    * Show the form for editing the specified resource.
    */

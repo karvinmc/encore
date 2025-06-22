@@ -38,6 +38,22 @@ $(function () {
 });
 
 // Ticket selector - book.blade.php
+function collectSelectedTickets() {
+  const selected = [];
+  document.querySelectorAll(".ticket-card").forEach((card) => {
+    const section = card.dataset.ticketType;
+    const price = parseInt(card.dataset.price);
+    const quantity = parseInt(card.querySelector(".quantity").textContent);
+
+    if (quantity > 0) {
+      selected.push({ section, price, quantity });
+    }
+  });
+
+  // Save to hidden input field
+  document.getElementById("selected-tickets").value = JSON.stringify(selected);
+}
+
 function updateTotals() {
   const cards = document.querySelectorAll(".ticket-card");
   let total = 0;
@@ -89,6 +105,10 @@ document.querySelectorAll(".ticket-card").forEach((card) => {
     quantitySpan.textContent = quantity;
     updateTotals();
   });
+});
+
+document.getElementById("booking-form").addEventListener("submit", function (e) {
+  collectSelectedTickets();
 });
 
 updateTotals();
