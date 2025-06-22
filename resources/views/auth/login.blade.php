@@ -6,7 +6,15 @@
   <section class="flex items-center justify-center min-h-screen bg-gray-100">
     <div class="w-full max-w-md p-8 space-y-6 bg-white rounded-xl shadow-lg">
       <h2 class="text-2xl font-bold text-center text-gray-800">Sign in to your account</h2>
-      <form class="space-y-4">
+
+      @if ($errors->any())
+        <div class="text-red-500 text-sm">
+          {{ $errors->first() }}
+        </div>
+      @endif
+
+      <form class="space-y-4" method="POST" action="{{ route('login') }}">
+        @csrf
         <div>
           <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
           <input
