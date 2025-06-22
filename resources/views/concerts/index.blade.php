@@ -10,28 +10,40 @@
       </h2>
     </div>
 
-    {{-- Trending singer cards --}}
+    {{-- Concert cards --}}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-12">
-
-      @foreach ($singers as $singer)
-        <div class="p-2">
-          <a href="{{ url('/concerts/singer/' . $singer->id) }}" class="block group">
-            <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
-              <img
-                   src="{{ $singer->image }}"
-                   alt="Singer image"
-                   class="w-full h-full object-cover" />
-            </div>
-            <div class="pt-4">
-              <h2 class="text-xl font-semibold text-black group-hover:text-sky-600 transition-colors duration-200">
-                {{ $singer->name }}
-              </h2>
-              <p class="text-gray-600 mt-1">{{ $singer->genre }}</p>
-            </div>
-          </a>
-        </div>
-      @endforeach
-
+      <div class="p-2">
+        <a href="singers/detail" class="block group">
+          <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
+            <img
+                 src="{{ asset('img/singers/placeholder.jpg') }}"
+                 alt="Concert image"
+                 class="w-full h-full object-cover" />
+          </div>
+          <div class="pt-4">
+            <h2 class="text-xl font-semibold text-black group-hover:text-sky-600 transition-colors duration-200">
+              Ed Sheeran
+            </h2>
+            <p class="text-gray-600 mt-1">Pop</p>
+          </div>
+        </a>
+      </div>
+      <div class="p-2">
+        <a href="#" class="block group">
+          <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
+            <img
+                 src="{{ asset('img/singers/placeholder2.jpg') }}"
+                 alt="Concert image"
+                 class="w-full h-full object-cover" />
+          </div>
+          <div class="pt-4">
+            <h2 class="text-xl font-semibold text-black group-hover:text-sky-600 transition-colors duration-200">
+              Sabrina Carpenter
+            </h2>
+            <p class="text-gray-600 mt-1">Pop</p>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 

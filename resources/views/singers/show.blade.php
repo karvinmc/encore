@@ -1,15 +1,15 @@
 @extends('layouts.default')
-@section('title', 'Encore | ' . $singer->name)
+@section('title', 'Encore | Ed Sheeran Concerts')
 
 @section('content')
 
   <section
-           class="flex items-center justify-center relative bg-cover bg-no-repeat min-h-[400px] px-4 sm:px-8 lg:px-16 py-16"
-           style="background-image: url('{{ $singer->image }}')">
+           class="flex items-center justify-center relative bg-cover bg-center bg-no-repeat min-h-[400px] px-4 sm:px-8 lg:px-16 py-16"
+           style="background-image: url('{{ asset('img/concerts/placeholder.jpg') }}')">
     <div class="absolute inset-0 bg-black opacity-50"></div>
     <div class="relative w-full max-w-6xl mx-auto">
-      <p class="text-xl font-semibold text-white">{{ $singer->genre }}</p>
-      <h2 class="text-4xl tracking-tight font-bold text-white mb-1">{{ $singer->name }} Concerts</h2>
+      <p class="text-xl font-semibold text-white">Pop</p>
+      <h2 class="text-4xl tracking-tight font-bold text-white mb-1">Ed Sheeran Concerts</h2>
     </div>
   </section>
 
@@ -92,7 +92,8 @@
       </h2>
 
       <p>
-        {{ $singer->description }}
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Tenetur, qui sequi saepe odit eum ullam cum est omnis enim cupiditate sunt voluptatum dicta vitae corrupti soluta aliquid asperiores nesciunt reiciendis.
       </p>
     </div>
   </section>
