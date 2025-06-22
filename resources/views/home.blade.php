@@ -29,78 +29,28 @@
     </div>
     <div class="relative mx-auto">
       <div class="concert-cards">
-        {{-- Item 1 --}}
-        <div class="p-5">
-          <a href="{{ url('/tickets/concert-name') }}" class="block group">
-            <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
-              <img
-                   src="{{ asset('img/concerts/placeholder.jpg') }}"
-                   alt="Concert image"
-                   class="w-full h-full object-cover" />
-            </div>
-            <div class="pt-4">
-              <h2 class="text-xl font-semibold text-black group-hover:text-sky-600 transition-colors duration-200">
-                Music Festival 2025
-              </h2>
-              <p class="text-gray-600 mt-1">Jakarta, Indonesia</p>
-              <p class="text-gray-600">July 20, 2025</p>
-            </div>
-          </a>
-        </div>
-        {{-- Item 2 --}}
-        <div class="p-5">
-          <a href="{{ url('/tickets/concert-name') }}" class="block group">
-            <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
-              <img
-                   src="{{ asset('img/concerts/placeholder2.jpg') }}"
-                   alt="Concert image"
-                   class="w-full h-full object-cover" />
-            </div>
-            <div class="pt-4">
-              <h2 class="text-xl font-semibold text-black group-hover:text-sky-600 transition-colors duration-200">
-                Music Festival 2025
-              </h2>
-              <p class="text-gray-600 mt-1">Jakarta, Indonesia</p>
-              <p class="text-gray-600">July 20, 2025</p>
-            </div>
-          </a>
-        </div>
-        {{-- Item 3 --}}
-        <div class="p-5">
-          <a href="{{ url('/tickets/concert-name') }}" class="block group">
-            <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
-              <img
-                   src="{{ asset('img/concerts/placeholder.jpg') }}"
-                   alt="Concert image"
-                   class="w-full h-full object-cover" />
-            </div>
-            <div class="pt-4">
-              <h2 class="text-xl font-semibold text-black group-hover:text-sky-600 transition-colors duration-200">
-                Music Festival 2025
-              </h2>
-              <p class="text-gray-600 mt-1">Jakarta, Indonesia</p>
-              <p class="text-gray-600">July 20, 2025</p>
-            </div>
-          </a>
-        </div>
-        {{-- Item 4 --}}
-        <div class="p-5">
-          <a href="{{ url('/tickets/concert-name') }}" class="block group">
-            <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
-              <img
-                   src="{{ asset('img/concerts/placeholder2.jpg') }}"
-                   alt="Concert image"
-                   class="w-full h-full object-cover" />
-            </div>
-            <div class="pt-4">
-              <h2 class="text-xl font-semibold text-black group-hover:text-sky-600 transition-colors duration-200">
-                Music Festival 2025
-              </h2>
-              <p class="text-gray-600 mt-1">Jakarta, Indonesia</p>
-              <p class="text-gray-600">July 20, 2025</p>
-            </div>
-          </a>
-        </div>
+
+        {{-- Concert items --}}
+        @foreach ($concerts as $concert)
+          <div class="p-5">
+            <a href="{{ url('/tickets/' . $concert->id . '/book') }}" class="block group">
+              <div class="aspect-video overflow-hidden group-hover:scale-102 transition-transform duration-300 rounded">
+                <img
+                     src="{{ $concert->image }}"
+                     alt="Concert image"
+                     class="w-full h-full object-cover" />
+              </div>
+              <div class="pt-4">
+                <h2 class="text-xl font-semibold text-black group-hover:text-sky-600 transition-colors duration-200">
+                  {{ $concert->name }}
+                </h2>
+                <p class="text-gray-600 mt-1">{{ $concert->venue->name }} • {{ $concert->venue->location }}</p>
+                <p class="text-gray-600">{{ $concert->formatted_date }}</p>
+              </div>
+            </a>
+          </div>
+        @endforeach
+
       </div>
     </div>
   </section>

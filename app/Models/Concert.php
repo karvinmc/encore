@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Concert extends Model
 {
-  protected $fillable = ['name', 'description', 'date', 'venue_id'];
+  protected $fillable = ['name', 'description', 'date', 'image', 'venue_id'];
 
   public function venue(): BelongsTo
   {
