@@ -77,7 +77,7 @@
                    class="w-full h-full object-cover" />
             </div>
             <div class="pt-4">
-              <p class="text-gray-600">{{ $singer->genre }}</p>
+              <p class="text-gray-600">{{ $singer->genre->name }}</p>
               <h2 class="text-xl mt-1 font-semibold text-black group-hover:text-sky-600 transition-colors duration-200">
                 {{ $singer->name }}
               </h2>

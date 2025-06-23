@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 use App\Models\Concert;
 use App\Models\Singer;
+use App\Models\Genre;
 
 class ConcertController extends Controller
 {
@@ -54,14 +55,19 @@ class ConcertController extends Controller
   public function genre(string $genre)
   {
 
-    $concerts = Concert::with(['venue', 'singers'])
+    // Find the genre by name or fail if not found
+    $genre = Genre::where('name', $genre)->firstOrFail();
+
+    $concerts = Concert::with(['venue', 'singers.genre'])
       ->where('date', '>=', now())
-      ->whereHas('singers', fn($q) => $q->where('genre', $genre))
+      ->whereHas('singers', function ($query) use ($genre) {
+        $query->where('genre_id', $genre->id);
+      })
       ->orderBy('date', 'asc')
       ->get()
       ->map(function ($concert) {
-        $date = Carbon::parse($concert->date);
 
+        $date = Carbon::parse($concert->date);
         $concert->day = $date->format('d');
         $concert->month = $date->format('F');
         $concert->day_name = strtoupper($date->format('D'));
@@ -70,11 +76,10 @@ class ConcertController extends Controller
         return $concert;
       });
 
-    $singers = Singer::where('genre', $genre)
-      ->whereHas('concerts', fn($q) => $q->where('date', '>=', now()))
-      ->get();
-
-    return view('concerts.genre', compact('concerts', 'singers', 'genre'));
+    return view('concerts.genre', [
+      'concerts' => $concerts,
+      'genre' => $genre->name,
+    ]);
   }
 
   /**

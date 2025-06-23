@@ -24,10 +24,27 @@
 
       {{-- Navigation links --}}
       <a href="{{ url('/') }}" class="py-2 px-3 block transition">Home</a>
-      <a href="{{ url('/concerts') }}" class="py-2 px-3 block">Concerts</a>
+      <div class="relative group">
+        <a href="{{ url('/concerts') }}" class="py-2 px-3 flex items-center gap-1">
+          Concerts
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mt-[1px]" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+          </svg>
+        </a>
+
+        {{-- Dropdown --}}
+        <div class="absolute left-0 mt-2 w-48 bg-white text-black rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+          @foreach ($genres as $genre)
+            <a href="{{ url('/concerts/' . $genre->name) }}" class="block px-4 py-2 hover:bg-gray-100">
+              {{ $genre->name }}
+            </a>
+          @endforeach
+        </div>
+      </div>
       <a href="{{ url('/blogs') }}" class="py-2 px-3 block">Blog</a>
 
       @auth
+
         {{-- Mobile bookings/admin link --}}
         @if (Auth::user()->role === 'admin')
           <a href="{{ url('/admin/dashboard') }}" class="block md:hidden py-2 px-3 text-white">Admin Dashboard</a>

@@ -8,7 +8,7 @@
            style="background-image: url('{{ $singer->image }}')">
     <div class="absolute inset-0 bg-black opacity-50"></div>
     <div class="relative w-full max-w-6xl mx-auto">
-      <p class="text-xl font-semibold text-white">{{ $singer->genre }}</p>
+      <p class="text-xl font-semibold text-white">{{ $singer->genre->name }}</p>
       <h2 class="text-4xl tracking-tight font-bold text-white mb-1">{{ $singer->name }} Concerts</h2>
     </div>
   </section>

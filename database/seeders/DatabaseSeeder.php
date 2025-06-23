@@ -65,13 +65,50 @@ class DatabaseSeeder extends Seeder
       }
     }
 
+    // GENRES
+    $genres = ['Pop', 'Rock', 'Hip Hop', 'Jazz', 'Classical', 'EDM', 'Country'];
+    $genreMap = [];
+
+    foreach ($genres as $genre) {
+      $genreMap[$genre] = DB::table('genres')->insertGetId([
+        'name' => $genre,
+        'created_at' => now(),
+        'updated_at' => now(),
+      ]);
+    }
+
     // SINGERS
     $singers = [
-      ['name' => 'Dua Lipa', 'description' => 'English pop star', 'genre' => 'Pop', 'image' => 'https://traxonsky.com/wp-content/uploads/2022/02/dualipaheadline-1.jpg'],
-      ['name' => 'Imagine Dragons', 'description' => 'American rock band', 'genre' => 'Rock', 'image' => 'https://www.rollingstone.com/wp-content/uploads/2024/06/imagine-dragons-QA.jpg?w=1581&h=1054&crop=1'],
-      ['name' => 'Kendrick Lamar', 'description' => 'American rapper and lyricist', 'genre' => 'Hip Hop', 'image' => 'https://cdn.apollo.audio/one/media/67a9/d509/21f1/f16e/4738/dd12/Kendrick-Lamar.jpg?quality=80&format=jpg&crop=0,0,2860,5078&resize=crop'],
-      ['name' => 'Olivia Rodrigo', 'description' => 'Pop singer-songwriter', 'genre' => 'Pop', 'image' => 'https://www.billboard.com/wp-content/uploads/2023/07/Olivia-Rodrigo-cr-Larissa-Hofmann-press-04-2023-billboard-1548.jpg'],
-      ['name' => 'Foo Fighters', 'description' => 'American rock band', 'genre' => 'Rock', 'image' => 'https://pasjabar.com/wp-content/uploads/2025/05/71ee7a892609a8cb9d9d94a175adc262-1024x666-1.jpg'],
+      [
+        'name' => 'Dua Lipa',
+        'description' => 'English pop star',
+        'genre_id' => $genreMap['Pop'],
+        'image' => 'https://traxonsky.com/wp-content/uploads/2022/02/dualipaheadline-1.jpg',
+      ],
+      [
+        'name' => 'Imagine Dragons',
+        'description' => 'American rock band',
+        'genre_id' => $genreMap['Rock'],
+        'image' => 'https://www.rollingstone.com/wp-content/uploads/2024/06/imagine-dragons-QA.jpg?w=1581&h=1054&crop=1',
+      ],
+      [
+        'name' => 'Kendrick Lamar',
+        'description' => 'American rapper and lyricist',
+        'genre_id' => $genreMap['Hip Hop'],
+        'image' => 'https://cdn.apollo.audio/one/media/67a9/d509/21f1/f16e/4738/dd12/Kendrick-Lamar.jpg?quality=80&format=jpg&crop=0,0,2860,5078&resize=crop',
+      ],
+      [
+        'name' => 'Olivia Rodrigo',
+        'description' => 'Pop singer-songwriter',
+        'genre_id' => $genreMap['Pop'],
+        'image' => 'https://www.billboard.com/wp-content/uploads/2023/07/Olivia-Rodrigo-cr-Larissa-Hofmann-press-04-2023-billboard-1548.jpg',
+      ],
+      [
+        'name' => 'Foo Fighters',
+        'description' => 'American rock band',
+        'genre_id' => $genreMap['Rock'],
+        'image' => 'https://pasjabar.com/wp-content/uploads/2025/05/71ee7a892609a8cb9d9d94a175adc262-1024x666-1.jpg',
+      ],
     ];
 
     foreach ($singers as $singer) {

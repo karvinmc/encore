@@ -26,7 +26,7 @@
               <h2 class="text-xl font-semibold text-black group-hover:text-sky-600 transition-colors duration-200">
                 {{ $singer->name }}
               </h2>
-              <p class="text-gray-600 mt-1">{{ $singer->genre }}</p>
+              <p class="text-gray-600 mt-1">{{ $singer->genre->name }}</p>
             </div>
           </a>
         </div>
