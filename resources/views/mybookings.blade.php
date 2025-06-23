@@ -4,7 +4,7 @@
 @section('content')
 
   {{-- Profile Header --}}
-  <section class="bg-white mx-10 pt-16 lg:px-6 border-b border-gray-400">
+  <section class="bg-white mx-10 pt-16 lg:px-6">
     <div class="max-w-screen-lg mx-auto text-center mb-8">
       <h2 class="text-4xl font-extrabold text-black">
         {{ Auth::user()->name }}'s Bookings
@@ -55,6 +55,7 @@
           </table>
         </div>
       @endif
+
     </div>
   </section>
 

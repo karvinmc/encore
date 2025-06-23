@@ -15,7 +15,9 @@ class SingerController extends Controller
    */
   public function index()
   {
-    return view('singers.index');
+    $singers = Singer::orderBy('name', 'asc')->paginate(12);
+
+    return view('singers.index', compact('singers'));
   }
 
   /**

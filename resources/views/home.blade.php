@@ -86,5 +86,9 @@
         </div>
       @endforeach
 
+    </div>
   </section>
+
+  @include('components.success-modal')
+
 @endsection

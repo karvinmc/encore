@@ -41,7 +41,7 @@
           @endforeach
         </div>
       </div>
-      <a href="{{ url('/blogs') }}" class="py-2 px-3 block">Blog</a>
+      <a href="{{ url('/singers') }}" class="py-2 px-3 block">Singers</a>
 
       @auth
 

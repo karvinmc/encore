@@ -13,10 +13,7 @@
     </div>
   </section>
 
-  <section id="concerts" class="bg-white mx-10 py-16 lg:px-6 border-b border-gray-400">
-    <div class="max-w-6xl mx-auto">
-      @include('components.filter')
-    </div>
+  <section id="concerts" class="bg-white mx-10 py-16 lg:px-6">
     <div class="flex mx-auto max-w-6xl gap-2 py-16">
       <h2 class="text-2xl font-bold tracking-tight text-black">
         Concerts

@@ -112,3 +112,5 @@ document.getElementById("booking-form").addEventListener("submit", function (e) 
 });
 
 updateTotals();
+
+// Date dropdown - filter.blade.php

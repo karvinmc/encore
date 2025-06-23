@@ -32,20 +32,11 @@ class ConcertController extends Controller
         return $concert;
       });
 
-    // Extract 3 unique singers
-    $uniqueSingers = collect();
-    foreach ($concerts as $concert) {
-      foreach ($concert->singers as $singer) {
-        if (!$uniqueSingers->contains('id', $singer->id)) {
-          $uniqueSingers->push($singer);
-        }
-        if ($uniqueSingers->count() >= 3) break 2;
-      }
-    }
+    $singers = Singer::orderBy('name')->take(3)->get();
 
     return view('concerts.index', [
       'concerts' => $concerts,
-      'singers' => $uniqueSingers
+      'singers' => $singers
     ]);
   }
 

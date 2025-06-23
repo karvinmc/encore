@@ -51,6 +51,8 @@ class BookingController extends Controller
         'total_price' => $total,
         'status' => 'paid',
       ]);
+
+      $ticket->decrement('stock', $quantity);
     }
 
     return redirect('/')->with('success', 'Booking successful!');

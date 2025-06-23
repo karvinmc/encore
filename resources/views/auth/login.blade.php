@@ -8,8 +8,14 @@
       <h2 class="text-2xl font-bold text-center text-gray-800">Sign in to your account</h2>
 
       @if ($errors->any())
-        <div class="text-red-500 text-sm">
+        <div class="max-w-7xl mx-auto mt-4 px-4 py-2 bg-red-100 text-red-500 rounded shadow">
           {{ $errors->first() }}
+        </div>
+      @endif
+
+      @if (session('success'))
+        <div class="max-w-7xl mx-auto mt-4 px-4 py-2 bg-green-100 text-green-700 rounded">
+          {{ session('success') }}
         </div>
       @endif
 
