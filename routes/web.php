@@ -44,3 +44,18 @@ Route::get('/register', function () {
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('home');
+});
+
+Route::middleware('auth:admin')->group(function () {
+    Route::resource('users', UserController::class);
+    Route::resource('venues', VenueController::class);
+    Route::resource('venue_sections', VenueSectionController::class);
+    Route::resource('singers', SingerController::class);
+    Route::resource('genres', GenreController::class);
+    Route::resource('concerts', ConcertController::class);
+    Route::resource('tickets', TicketController::class);
+    Route::resource('bookings', BookingController::class);
+});
