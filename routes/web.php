@@ -8,6 +8,11 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\VenueController;
+use App\Http\Controllers\VenueSectionController;
+use App\Http\Controllers\GenreController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -30,10 +35,6 @@ Route::middleware(['auth', 'role:admin,customer'])->group(function () {
   Route::post('/checkout/{id}', [BookingController::class, 'store'])->name('checkout.store');
 });
 
-Route::middleware(['auth', 'role:admin'])->group(function (){
-  Route::get('/admin/dashboard', [DashboardController::class, 'index']);
-});
-
 Route::get('/login', function () {
   return view('auth.login');
 });
@@ -45,11 +46,10 @@ Route::get('/register', function () {
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// ADMIN ROUTES
 Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('home');
-});
-
-Route::middleware('auth:admin')->group(function () {
+  Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::resource('users', UserController::class);
     Route::resource('venues', VenueController::class);
     Route::resource('venue_sections', VenueSectionController::class);
@@ -58,4 +58,5 @@ Route::middleware('auth:admin')->group(function () {
     Route::resource('concerts', ConcertController::class);
     Route::resource('tickets', TicketController::class);
     Route::resource('bookings', BookingController::class);
+  });
 });
