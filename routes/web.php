@@ -23,14 +23,16 @@ use App\Http\Controllers\DashboardController;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/concerts', [ConcertController::class, 'index']);
 Route::get('/concerts/singer/{id}', [SingerController::class, 'show']);
+Route::get('/concerts/{genre}', [ConcertController::class, 'genre'])->name('concerts.genre');
 
 Route::middleware(['auth', 'role:admin,customer'])->group(function () {
   Route::get('/tickets/{id}/book', [TicketController::class, 'show']);
   Route::post('/tickets/{id}/confirm', [TicketController::class, 'confirm'])->name('tickets.confirm');
   Route::post('/checkout/{id}', [BookingController::class, 'store'])->name('checkout.store');
+  Route::get('/bookings', [BookingController::class, 'show'])->name('mybookings.show');
 });
 
-Route::middleware(['auth', 'role:admin'])->group(function (){
+Route::middleware(['auth', 'role:admin'])->group(function () {
   Route::get('/admin/dashboard', [DashboardController::class, 'index']);
 });
 

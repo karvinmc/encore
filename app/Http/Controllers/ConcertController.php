@@ -49,6 +49,35 @@ class ConcertController extends Controller
   }
 
   /**
+   * Display a listing of the resource for a specific genres.
+   */
+  public function genre(string $genre)
+  {
+
+    $concerts = Concert::with(['venue', 'singers'])
+      ->where('date', '>=', now())
+      ->whereHas('singers', fn($q) => $q->where('genre', $genre))
+      ->orderBy('date', 'asc')
+      ->get()
+      ->map(function ($concert) {
+        $date = Carbon::parse($concert->date);
+
+        $concert->day = $date->format('d');
+        $concert->month = $date->format('F');
+        $concert->day_name = strtoupper($date->format('D'));
+        $concert->time = $date->format('H:i');
+
+        return $concert;
+      });
+
+    $singers = Singer::where('genre', $genre)
+      ->whereHas('concerts', fn($q) => $q->where('date', '>=', now()))
+      ->get();
+
+    return view('concerts.genre', compact('concerts', 'singers', 'genre'));
+  }
+
+  /**
    * Show the form for creating a new resource.
    */
   public function create()

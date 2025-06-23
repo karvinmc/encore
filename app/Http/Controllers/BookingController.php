@@ -59,9 +59,16 @@ class BookingController extends Controller
   /**
    * Display the specified resource.
    */
-  public function show(string $id)
+  public function show()
   {
-    //
+    $user = Auth::user();
+
+    $bookings = Booking::with(['ticket.concert', 'ticket.section.venue']) // assuming your relationships are set up correctly
+      ->where('user_id', $user->id)
+      ->orderByDesc('created_at')
+      ->get();
+
+    return view('mybookings', compact('bookings'));
   }
 
   /**

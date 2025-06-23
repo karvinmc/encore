@@ -46,7 +46,7 @@
       <h2 class="text-4xl tracking-tight font-extrabold text-black mb-1">
         Upcoming Concerts
       </h2>
-      <p class="text-xl tracking-tight">Showing 1 results</p>
+      <p class="text-xl tracking-tight">Showing {{ $concerts->count() }} results</p>
     </div>
 
     @include('components.concert-card')
