@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class VenueSection extends Model
 {
-  protected $fillable = ['venue_id', 'name', 'type', 'capacity'];
+  protected $fillable = ['venue_id', 'name', 'type'];
 
   public function venue(): BelongsTo
   {
