@@ -1,4 +1,4 @@
-<aside class="w-64 bg-gradient-to-b from-black via-black to-yellow-400 text-white h-screen shadow-lg">
+<aside class="w-64 bg-gradient-to-b from-black via-black to-yellow-400 text-white shadow-lg">
   <div class="p-6 text-left border-b border-white/20">
     <h2 class="text-xl font-semibold">{{ Auth::user()->name }}</h2>
     <p class="text-green-400 text-sm">Online</p>
@@ -47,10 +47,10 @@
             <a href="{{ url('admin/venues') }}" class="block py-2 px-4 rounded hover:bg-white/10 transition duration-200">Venues</a>
             <a href="{{ url('admin/venue_sections') }}" class="block py-2 px-4 rounded hover:bg-white/10 transition duration-200">Venue Sections</a>
             <a href="{{ url('admin/singers') }}" class="block py-2 px-4 rounded hover:bg-white/10 transition duration-200">Singers</a>
-            <a href="" class="block py-2 px-4 rounded hover:bg-white/10 transition duration-200">Genres</a>
-            <a href="" class="block py-2 px-4 rounded hover:bg-white/10 transition duration-200">Concerts</a>
-            <a href="" class="block py-2 px-4 rounded hover:bg-white/10 transition duration-200">Tickets</a>
-            <a href="" class="block py-2 px-4 rounded hover:bg-white/10 transition duration-200">Bookings</a>
+            <a href="{{ url('admin/genres') }}" class="block py-2 px-4 rounded hover:bg-white/10 transition duration-200">Genres</a>
+            <a href="{{ url('admin/concerts') }}" class="block py-2 px-4 rounded hover:bg-white/10 transition duration-200">Concerts</a>
+            <a href="{{ url('admin/tickets') }}" class="block py-2 px-4 rounded hover:bg-white/10 transition duration-200">Tickets</a>
+            <a href="{{ url('admin/bookings') }}" class="block py-2 px-4 rounded hover:bg-white/10 transition duration-200">Bookings</a>
           </li>
         </ul>
       </li>

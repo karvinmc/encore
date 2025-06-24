@@ -1,17 +1,17 @@
 @extends('layouts.admin')
-@section('title', 'Singers')
+@section('title', 'Venues')
 
 @section('content')
   <div class="p-6 mb-8">
     <div class="flex items-center justify-between mb-6">
-      <h1 class="text-3xl font-semibold text-gray-800">Singers</h1>
+      <h1 class="text-3xl font-semibold text-gray-800">Genres</h1>
       <button onclick="openModal()"
               class="inline-flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition cursor-pointer">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
              stroke="currentColor" stroke-width="2">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
         </svg>
-        Add Singer
+        Add Genre
       </button>
     </div>
 
@@ -29,35 +29,26 @@
           <tr>
             <th class="px-6 py-3 border-b uppercase">ID</th>
             <th class="px-6 py-3 border-b uppercase">Name</th>
-            <th class="px-6 py-3 border-b uppercase">Description</th>
-            <th class="px-6 py-3 border-b uppercase">Genre</th>
-            <th class="px-6 py-3 border-b uppercase">Image</th>
             <th class="px-6 py-3 border-b uppercase">Created At</th>
             <th class="px-6 py-3 border-b uppercase">Updated At</th>
             <th class="px-6 py-3 border-b text-center uppercase">Actions</th>
           </tr>
         </thead>
         <tbody class="divide-y divide-gray-200">
-          @forelse ($singers as $singer)
+          @forelse ($genres as $genre)
             <tr class="hover:bg-gray-50 transition">
-              <td class="px-6 py-4">{{ $singer->id }}</td>
-              <td class="px-6 py-4">{{ $singer->name }}</td>
-              <td class="px-6 py-4 overflow-auto">{{ $singer->description }}</td>
-              <td class="px-6 py-4">{{ $singer->genre->name }}</td>
-              <td class="px-6 py-4 overflow-auto"><img src="{{ $singer->image }}" alt="Singer image" class="w-18 h-auto"></td>
-              <td class="px-6 py-4">{{ $singer->created_at }}</td>
-              <td class="px-6 py-4">{{ $singer->updated_at }}</td>
+              <td class="px-6 py-4">{{ $genre->id }}</td>
+              <td class="px-6 py-4">{{ $genre->name }}</td>
+              <td class="px-6 py-4">{{ $genre->created_at }}</td>
+              <td class="px-6 py-4">{{ $genre->updated_at }}</td>
               <td class="px-6 py-4 flex justify-center gap-2">
                 <button
                         class="edit-btn inline-flex items-center px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition text-sm cursor-pointer"
-                        data-id="{{ $singer->id }}"
-                        data-name="{{ $singer->name }}"
-                        data-description="{{ $singer->description }}"
-                        data-genreId="{{ $singer->genre->id }}"
-                        data-image="{{ $singer->image }}">
+                        data-id="{{ $genre->id }}"
+                        data-name="{{ $genre->name }}">
                   Edit
                 </button>
-                <form action="{{ route('admin.singers.destroy', $singer->id) }}" method="POST" onsubmit="return confirm('Are you sure?')">
+                <form action="{{ route('admin.genres.destroy', $genre->id) }}" method="POST" onsubmit="return confirm('Are you sure?')">
                   @csrf
                   @method('DELETE')
                   <button type="submit"
@@ -69,7 +60,7 @@
             </tr>
           @empty
             <tr>
-              <td colspan="4" class="px-6 py-4 text-center text-gray-500">No singers found.</td>
+              <td colspan="4" class="px-6 py-4 text-center text-gray-500">No genres found.</td>
             </tr>
           @endforelse
         </tbody>
@@ -77,5 +68,5 @@
     </div>
   </div>
 
-  @include('admin.singers.form')
+  @include('admin.genres.form')
 @endsection

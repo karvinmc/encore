@@ -49,12 +49,17 @@ class VenueSectionController extends Controller
   {
     $section = VenueSection::findOrFail($id);
     $validated = $request->validate([
-      'venue_id' => 'required|exists:venues,id',
-      'name' => 'required|string|max:255',
-      'type' => 'required|in:standing,seated',
+      'venue_id' => 'nullable|exists:venues,id',
+      'name' => 'nullable|string|max:255',
+      'type' => 'nullable|in:standing,seated',
     ]);
 
-    $section->update($validated);
+    // Only update fields if present, otherwise keep old value
+    $section->update([
+      'venue_id' => $validated['venue_id'] ?? $section->venue_id,
+      'name' => $validated['name'] ?? $section->name,
+      'type' => $validated['type'] ?? $section->type,
+    ]);
 
     return redirect()->route('admin.venue_sections.index')->with('success', 'Section updated successfully.');
   }

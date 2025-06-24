@@ -28,7 +28,7 @@ use App\Http\Controllers\GenreController;
 
 Route::get('/', action: [HomeController::class, 'index']);
 
-Route::get('/concerts', [ConcertController::class, 'index']);
+Route::get('/concerts', [ConcertController::class, 'user_index']);
 Route::get('/concerts/search', [SearchController::class, 'search'])->name('concerts.search');
 Route::get('/concerts/singer/{id}', [SingerController::class, 'show']);
 Route::get('/concerts/{genre}', [ConcertController::class, 'genre'])->name('concerts.genre');
@@ -60,6 +60,7 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::prefix('admin')->name('admin.')->group(function () {
   Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
+
     Route::resource('users', UserController::class);
     Route::resource('venues', VenueController::class);
     Route::resource('venue_sections', VenueSectionController::class);
@@ -68,5 +69,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('concerts', ConcertController::class);
     Route::resource('tickets', TicketController::class);
     Route::resource('bookings', BookingController::class);
+    Route::post('/bookings/admin-store', [BookingController::class, 'adminStore'])->name('bookings.adminStore');
+
+    Route::post('/concerts/attach-singer', [ConcertController::class, 'attachSinger'])->name('concerts.attachSinger');
+    Route::post('/concerts/detach-singer', [ConcertController::class, 'detachSinger'])->name('concerts.detachSinger');
+    Route::post('/concerts/{concert}/update-singers', [ConcertController::class, 'updateSingers'])->name('concerts.updateSingers');
   });
 });

@@ -4,61 +4,56 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Genre;
+
 class GenreController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+  /**
+   * Display a listing of the resource.
+   */
+  public function index()
+  {
+    $genres = Genre::all();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+    return view('admin.genres.index', compact('genres'));
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+  /**
+   * Store a newly created resource in storage.
+   */
+  public function store(Request $request)
+  {
+    $validated = $request->validate([
+      'name' => 'required|string|max:255',
+    ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+    Genre::create($validated);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+    return redirect()->route('admin.genres.index')->with('success', 'Genre created successfully.');
+  }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+  /**
+   * Update the specified resource in storage.
+   */
+  public function update(Request $request, string $id)
+  {
+    $genre = Genre::findOrFail($id);
+    $validated = $request->validate([
+      'name' => 'required|string|max:255',
+    ]);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    $genre->update($validated);
+
+    return redirect()->route('admin.genres.index')->with('success', 'Genre updated successfully.');
+  }
+
+  /**
+   * Remove the specified resource from storage.
+   */
+  public function destroy(string $id)
+  {
+    $genre = Genre::findOrFail($id);
+    $genre->delete();
+    return redirect()->route('admin.genres.index')->with('success', 'Genre deleted successfully.');
+  }
 }

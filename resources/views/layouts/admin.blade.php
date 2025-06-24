@@ -11,7 +11,7 @@
 </head>
 
 <body class="font-sans">
-  <div class="flex h-screen">
+  <div class="flex min-h-screen">
     @include('admin.partials.sidebar')
     <div class="flex-grow flex flex-col">
       @include('admin.partials.header')
