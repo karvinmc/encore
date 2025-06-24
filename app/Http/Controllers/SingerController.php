@@ -16,10 +16,9 @@ class SingerController extends Controller
    */
   public function index()
   {
-    $genres = Genre::all();
-    $singers = Singer::with('genre');
+    $singers = Singer::orderBy('name', 'asc')->paginate(12);
 
-    return view('admin.singers.index', compact('singers', 'genres'));
+    return view('singers.index', compact('singers'));
   }
 
   /**

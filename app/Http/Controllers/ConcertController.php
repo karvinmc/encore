@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 use App\Models\Concert;
 use App\Models\Singer;
+use App\Models\Genre;
 
 class ConcertController extends Controller
 {
@@ -31,20 +32,44 @@ class ConcertController extends Controller
         return $concert;
       });
 
-    // Extract 3 unique singers
-    $uniqueSingers = collect();
-    foreach ($concerts as $concert) {
-      foreach ($concert->singers as $singer) {
-        if (!$uniqueSingers->contains('id', $singer->id)) {
-          $uniqueSingers->push($singer);
-        }
-        if ($uniqueSingers->count() >= 3) break 2;
-      }
-    }
+    $singers = Singer::orderBy('name')->take(3)->get();
 
     return view('concerts.index', [
       'concerts' => $concerts,
-      'singers' => $uniqueSingers
+      'singers' => $singers
+    ]);
+  }
+
+  /**
+   * Display a listing of the resource for a specific genres.
+   */
+  public function genre(string $genre)
+  {
+
+    // Find the genre by name or fail if not found
+    $genre = Genre::where('name', $genre)->firstOrFail();
+
+    $concerts = Concert::with(['venue', 'singers.genre'])
+      ->where('date', '>=', now())
+      ->whereHas('singers', function ($query) use ($genre) {
+        $query->where('genre_id', $genre->id);
+      })
+      ->orderBy('date', 'asc')
+      ->get()
+      ->map(function ($concert) {
+
+        $date = Carbon::parse($concert->date);
+        $concert->day = $date->format('d');
+        $concert->month = $date->format('F');
+        $concert->day_name = strtoupper($date->format('D'));
+        $concert->time = $date->format('H:i');
+
+        return $concert;
+      });
+
+    return view('concerts.genre', [
+      'concerts' => $concerts,
+      'genre' => $genre->name,
     ]);
   }
 

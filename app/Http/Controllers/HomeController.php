@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 use App\Models\Concert;
+use App\Models\Singer;
 
 class HomeController extends Controller
 {
@@ -24,7 +25,17 @@ class HomeController extends Controller
         return $concert;
       });
 
-    return view('home', ['concerts' => $concerts]);
+    $uniqueSingers = collect();
+    foreach ($concerts as $concert) {
+      foreach ($concert->singers as $singer) {
+        if (!$uniqueSingers->contains('id', $singer->id)) {
+          $uniqueSingers->push($singer);
+        }
+        if ($uniqueSingers->count() >= 3) break 2;
+      }
+    }
+
+    return view('home', ['concerts' => $concerts, 'uniqueSingers' => $uniqueSingers]);
   }
 
   /**

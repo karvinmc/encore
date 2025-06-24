@@ -12,12 +12,17 @@
     {{-- Right --}}
     <div class="flex flex-col gap-8 items-center justify-center px-5 space-y-2">
 
-      {{-- Quantity Selector --}}
-      <div class="flex items-center space-x-2 border rounded px-2 py-1">
-        <button class="decrement text-gray-600 hover:text-black cursor-pointer">-</button>
-        <span class="quantity w-6 text-center">0</span>
-        <button class="increment text-gray-600 hover:text-black cursor-pointer">+</button>
-      </div>
+      @if ($ticket->stock > 0)
+        {{-- Quantity Selector --}}
+        <div class="flex items-center space-x-2 border rounded px-2 py-1">
+          <button class="decrement text-gray-600 hover:text-black cursor-pointer">-</button>
+          <span class="quantity w-6 text-center">0</span>
+          <button class="increment text-gray-600 hover:text-black cursor-pointer">+</button>
+        </div>
+      @else
+        <span class="text-red-500 font-semibold">Sold Out</span>
+      @endif
+
     </div>
   </div>
 @endforeach

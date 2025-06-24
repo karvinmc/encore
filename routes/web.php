@@ -8,6 +8,7 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VenueController;
 use App\Http\Controllers\VenueSectionController;
@@ -25,14 +26,22 @@ use App\Http\Controllers\GenreController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', action: [HomeController::class, 'index']);
+
 Route::get('/concerts', [ConcertController::class, 'index']);
+Route::get('/concerts/search', [SearchController::class, 'search'])->name('concerts.search');
 Route::get('/concerts/singer/{id}', [SingerController::class, 'show']);
+Route::get('/concerts/{genre}', [ConcertController::class, 'genre'])->name('concerts.genre');
+
+Route::get('/singers', [SingerController::class, 'index']);
 
 Route::middleware(['auth', 'role:admin,customer'])->group(function () {
   Route::get('/tickets/{id}/book', [TicketController::class, 'show']);
   Route::post('/tickets/{id}/confirm', [TicketController::class, 'confirm'])->name('tickets.confirm');
+
   Route::post('/checkout/{id}', [BookingController::class, 'store'])->name('checkout.store');
+
+  Route::get('/bookings', [BookingController::class, 'show'])->name('mybookings.show');
 });
 
 Route::get('/login', function () {
@@ -45,6 +54,7 @@ Route::get('/register', function () {
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 // ADMIN ROUTES
 Route::prefix('admin')->name('admin.')->group(function () {
