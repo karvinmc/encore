@@ -10,10 +10,16 @@
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
 </head>
 
-<body>
-  <main>
-    @yield('content')
-  </main>
+<body class="font-sans">
+  <div class="flex min-h-screen">
+    @include('admin.partials.sidebar')
+    <div class="flex-grow flex flex-col">
+      @include('admin.partials.header')
+      <main class="p-6">
+        @yield('content')
+      </main>
+    </div>
+  </div>
 </body>
 
 </html>

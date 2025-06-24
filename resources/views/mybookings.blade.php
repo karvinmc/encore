@@ -30,7 +30,7 @@
                 <th class="px-6 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider">Total Price</th>
                 <th class="px-6 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider">Quantity</th>
                 <th class="px-6 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider">Booked At</th>
-                <th class="px-6 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider">Status</th> {{-- 👈 New --}}
+                <th class="px-6 py-3 text-left text-xs font-semibold text-white uppercase tracking-wider">Status</th>
               </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200 text-sm text-gray-700">
