@@ -11,10 +11,12 @@
       <h2 class="text-4xl tracking-tight font-bold text-white mb-1">{{ $concert->name }}</h2>
       <p class="text-xl font-semibold text-white">{{ $concert->full_date }}</p>
       <p class="text-xl font-semibold text-white">{{ $concert->venue->name }} • {{ $concert->venue->location }}</p>
+      <p class="text-lg text-white mt-2">{{ $concert->description }}</p>
     </div>
   </section>
 
   <section class="bg-white py-8 md:py-16">
+
     <div class="mx-auto max-w-6xl mb-8 lg:mb-16">
       <h2 class="text-4xl tracking-tight font-bold text-black">
         Ticket Information
