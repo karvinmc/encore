@@ -33,7 +33,7 @@ Route::get('/concerts/search', [SearchController::class, 'search'])->name('conce
 Route::get('/concerts/singer/{id}', [SingerController::class, 'show']);
 Route::get('/concerts/{genre}', [ConcertController::class, 'genre'])->name('concerts.genre');
 
-Route::get('/singers', [SingerController::class, 'index']);
+Route::get('/singers', [SingerController::class, 'user_index']);
 
 Route::middleware(['auth', 'role:admin,customer'])->group(function () {
   Route::get('/tickets/{id}/book', [TicketController::class, 'show']);

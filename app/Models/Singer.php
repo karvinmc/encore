@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Singer extends Model
 {
-  protected $fillable = ['name', 'description', 'genre', 'image'];
+  protected $fillable = ['name', 'description', 'genre_id', 'image'];
 
   public function concerts(): BelongsToMany
   {

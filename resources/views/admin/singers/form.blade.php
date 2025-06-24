@@ -2,7 +2,7 @@
   <div class="bg-white rounded-lg shadow-lg w-full max-w-xl p-6 relative">
     <h2 id="modalTitle" class="text-xl font-semibold mb-4">Singer Form</h2>
 
-    <form id="form" method="POST" action="{{ old('edit_id') ? route('admin.venues.update', old('edit_id')) : route('admin.venues.store') }}">
+    <form id="form" method="POST" action="{{ old('edit_id') ? route('admin.singers.update', old('edit_id')) : route('admin.singers.store') }}">
       @csrf
       <input type="hidden" name="_method" value="{{ old('edit_id') ? 'PUT' : 'POST' }}" id="formMethod">
       <input type="hidden" name="show_modal" value="1">
@@ -21,6 +21,14 @@
         <textarea name="description" id="singerDescription"
                   class="w-full px-4 py-2 border rounded">{{ old('description') }}</textarea>
         @error('description')
+          <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+        @enderror
+      </div>
+      <div class="mb-4">
+        <label for="image" class="block mb-1 font-medium text-sm">Image (URL Only)</label>
+        <input type="text" name="image" id="singerImage"
+               class="w-full px-4 py-2 border rounded" value="{{ old('image') }}">
+        @error('image')
           <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
         @enderror
       </div>
@@ -59,13 +67,14 @@
 <script>
   document.querySelectorAll('.edit-btn').forEach(button => {
     button.addEventListener('click', () => {
-      const venue = {
+      const singer = {
         id: button.dataset.id,
         name: button.dataset.name,
-        location: button.dataset.location,
-        capacity: button.dataset.capacity,
+        description: button.dataset.description,
+        image: button.dataset.image,
+        genre_id: button.dataset.genreId,
       };
-      openModal(venue);
+      openModal(singer);
     });
   });
 
@@ -73,32 +82,35 @@
   @if ($errors->any())
     openModal({
       id: '{{ old('edit_id') }}',
-      name: '{{ old('name') }}',
-      location: '{{ old('location') }}',
-      capacity: '{{ old('capacity') }}',
+      name: `{{ old('name') }}`,
+      description: `{{ old('description') }}`,
+      genre_id: `{{ old('genre_id') }}`,
+      image: `{{ old('image') }}`,
     });
   @endif
 
-  function openModal(venue = null) {
+  function openModal(singer = null) {
     const modal = document.getElementById('modal');
     const form = document.getElementById('form');
     const methodInput = document.getElementById('formMethod');
     const title = document.getElementById('modalTitle');
-    const nameInput = document.getElementById('venueName');
-    const locationInput = document.getElementById('venueLocation');
-    const capacityInput = document.getElementById('venueCapacity');
+    const nameInput = document.getElementById('singerName');
+    const descriptionInput = document.getElementById('singerDescription');
+    const imageInput = document.getElementById('singerImage');
+    const genreInput = document.getElementById('singerGenre');
 
     form.reset();
     methodInput.value = 'POST';
 
-    if (venue && venue.id) {
-      form.action = `{{ route('admin.venues.update', ':id') }}`.replace(':id', venue.id);
+    if (singer && singer.id) {
+      form.action = `{{ route('admin.singers.update', ':id') }}`.replace(':id', singer.id);
       methodInput.value = 'PUT';
-      nameInput.value = venue.name;
-      locationInput.value = venue.location;
-      capacityInput.value = venue.capacity;
+      nameInput.value = singer.name || '';
+      descriptionInput.value = singer.description || '';
+      genreInput.value = singer.genre_id || '';
+      imageInput.value = singer.image || '';
     } else {
-      form.action = "{{ route('admin.venues.store') }}";
+      form.action = "{{ route('admin.singers.store') }}";
     }
 
     modal.classList.remove('hidden');

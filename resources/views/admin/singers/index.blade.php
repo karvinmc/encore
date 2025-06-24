@@ -42,9 +42,9 @@
             <tr class="hover:bg-gray-50 transition">
               <td class="px-6 py-4">{{ $singer->id }}</td>
               <td class="px-6 py-4">{{ $singer->name }}</td>
-              <td class="px-6 py-4">{{ $singer->description }}</td>
+              <td class="px-6 py-4 overflow-auto">{{ $singer->description }}</td>
               <td class="px-6 py-4">{{ $singer->genre->name }}</td>
-              <td class="px-6 py-4">{{ $singer->image }}</td>
+              <td class="px-6 py-4 overflow-auto"><img src="{{ $singer->image }}" alt="Singer image" class="w-18 h-auto"></td>
               <td class="px-6 py-4">{{ $singer->created_at }}</td>
               <td class="px-6 py-4">{{ $singer->updated_at }}</td>
               <td class="px-6 py-4 flex justify-center gap-2">
@@ -53,7 +53,7 @@
                         data-id="{{ $singer->id }}"
                         data-name="{{ $singer->name }}"
                         data-description="{{ $singer->description }}"
-                        data-genre="{{ $singer->genare }}"
+                        data-genreId="{{ $singer->genre->id }}"
                         data-image="{{ $singer->image }}">
                   Edit
                 </button>
