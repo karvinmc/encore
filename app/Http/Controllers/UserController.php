@@ -67,4 +67,15 @@ class UserController extends Controller
 
     return redirect('/admin/users')->with('success', 'User updated successfully!');
   }
+
+  /**
+   * Remove the specified resource from storage.
+   */
+  public function destroy(string $id)
+  {
+    $user = User::findOrFail($id);
+    $user->delete();
+
+    return redirect('/admin/users')->with('success', 'User deleted successfully!');
+  }
 }

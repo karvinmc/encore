@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 use App\Models\Singer;
+use App\Models\Genre;
 
 class SingerController extends Controller
 {
@@ -15,7 +16,10 @@ class SingerController extends Controller
    */
   public function index()
   {
-    return view('singers.index');
+    $genres = Genre::all();
+    $singers = Singer::with('genre');
+
+    return view('admin.singers.index', compact('singers', 'genres'));
   }
 
   /**

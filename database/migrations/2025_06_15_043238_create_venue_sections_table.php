@@ -16,7 +16,6 @@ return new class extends Migration
       $table->foreignId('venue_id')->constrained()->onDelete('cascade');
       $table->string('name');
       $table->enum('type', ['seated', 'standing']);
-      $table->integer('capacity');
       $table->timestamps();
     });
   }

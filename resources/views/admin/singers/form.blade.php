@@ -1,7 +1,8 @@
 <div id="modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm items-center justify-center z-50 {{ $errors->any() || old('show_modal') ? 'flex' : 'hidden' }}">
   <div class="bg-white rounded-lg shadow-lg w-full max-w-xl p-6 relative">
-    <h2 id="modalTitle" class="text-xl font-semibold mb-4">User Form</h2>
-    <form id="form" method="POST" action="{{ old('edit_id') ? route('admin.users.update', old('edit_id')) : route('admin.users.store') }}">
+    <h2 id="modalTitle" class="text-xl font-semibold mb-4">Singer Form</h2>
+
+    <form id="form" method="POST" action="{{ old('edit_id') ? route('admin.venues.update', old('edit_id')) : route('admin.venues.store') }}">
       @csrf
       <input type="hidden" name="_method" value="{{ old('edit_id') ? 'PUT' : 'POST' }}" id="formMethod">
       <input type="hidden" name="show_modal" value="1">
@@ -9,44 +10,31 @@
 
       <div class="mb-4">
         <label for="name" class="block mb-1 font-medium text-sm">Name</label>
-        <input type="text" name="name" id="userName"
+        <input type="text" name="name" id="singerName"
                class="w-full px-4 py-2 border rounded" value="{{ old('name') }}">
         @error('name')
           <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
         @enderror
       </div>
       <div class="mb-4">
-        <label for="email" class="block mb-1 font-medium text-sm">Email</label>
-        <input type="email" name="email" id="userEmail"
-               class="w-full px-4 py-2 border rounded" value="{{ old('email') }}">
-        @error('email')
+        <label for="description" class="block mb-1 font-medium text-sm">Description</label>
+        <textarea name="description" id="singerDescription"
+                  class="w-full px-4 py-2 border rounded">{{ old('description') }}</textarea>
+        @error('description')
           <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
         @enderror
       </div>
       <div class="mb-4">
-        <label for="role" class="block mb-1 font-medium text-sm">Role</label>
-        <select name="role" id="userRole" class="w-full px-3 py-2 border rounded">
+        <label for="genre_id" class="block mb-1 font-medium text-sm">Genre</label>
+        <select name="genre_id" id="singerGenre" class="px-3 py-2 border rounded w-full">
           <option value=""></option>
-          <option value="customer" {{ old('role') == 'customer' ? 'selected' : '' }}>Customer</option>
-          <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+          @foreach ($genres as $genre)
+            <option value="{{ $genre->id }}" {{ old('genre_id') == $genre->id ? 'selected' : '' }}>
+              {{ $genre->name }}
+            </option>
+          @endforeach
         </select>
-        @error('role')
-          <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-        @enderror
-      </div>
-      <div class="mb-4">
-        <label for="password" class="block mb-1 font-medium text-sm">Password</label>
-        <input type="password" name="password"
-               class="w-full px-4 py-2 border rounded">
-        @error('password')
-          <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-        @enderror
-      </div>
-      <div class="mb-4">
-        <label for="confirm-password" class="block mb-1 font-medium text-sm">Confirm Password</label>
-        <input type="password" name="password_confirmation"
-               class="w-full px-4 py-2 border rounded">
-        @error('password_confirmation')
+        @error('genre_id')
           <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
         @enderror
       </div>
@@ -71,13 +59,13 @@
 <script>
   document.querySelectorAll('.edit-btn').forEach(button => {
     button.addEventListener('click', () => {
-      const user = {
+      const venue = {
         id: button.dataset.id,
         name: button.dataset.name,
-        email: button.dataset.email,
-        role: button.dataset.role,
+        location: button.dataset.location,
+        capacity: button.dataset.capacity,
       };
-      openModal(user);
+      openModal(venue);
     });
   });
 
@@ -86,30 +74,31 @@
     openModal({
       id: '{{ old('edit_id') }}',
       name: '{{ old('name') }}',
-      email: '{{ old('email') }}',
-      role: '{{ old('role') }}'
+      location: '{{ old('location') }}',
+      capacity: '{{ old('capacity') }}',
     });
   @endif
 
-  function openModal(user = null) {
+  function openModal(venue = null) {
     const modal = document.getElementById('modal');
     const form = document.getElementById('form');
     const methodInput = document.getElementById('formMethod');
     const title = document.getElementById('modalTitle');
-    const nameInput = document.getElementById('userName');
-    const emailInput = document.getElementById('userEmail');
-    const roleInput = document.getElementById('userRole');
+    const nameInput = document.getElementById('venueName');
+    const locationInput = document.getElementById('venueLocation');
+    const capacityInput = document.getElementById('venueCapacity');
 
+    form.reset();
     methodInput.value = 'POST';
 
-    if (user && user.id) {
-      form.action = `{{ route('admin.users.update', ':id') }}`.replace(':id', user.id);
+    if (venue && venue.id) {
+      form.action = `{{ route('admin.venues.update', ':id') }}`.replace(':id', venue.id);
       methodInput.value = 'PUT';
-      nameInput.value = user.name;
-      emailInput.value = user.email;
-      roleInput.value = user.role;
+      nameInput.value = venue.name;
+      locationInput.value = venue.location;
+      capacityInput.value = venue.capacity;
     } else {
-      form.action = "{{ route('admin.users.store') }}";
+      form.action = "{{ route('admin.venues.store') }}";
     }
 
     modal.classList.remove('hidden');

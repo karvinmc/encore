@@ -44,8 +44,10 @@
         <ul id="dropdown-menu" class="mt-1 ml-8 space-y-1 hidden">
           <li>
             <a href="{{ url('admin/users') }}" class="block py-2 px-4 rounded hover:bg-white/10 transition duration-200">Users</a>
-            <a href="" class="block py-2 px-4 rounded hover:bg-white/10 transition duration-200">Venues</a>
-            <a href="" class="block py-2 px-4 rounded hover:bg-white/10 transition duration-200">Singers</a>
+            <a href="{{ url('admin/venues') }}" class="block py-2 px-4 rounded hover:bg-white/10 transition duration-200">Venues</a>
+            <a href="{{ url('admin/venue_sections') }}" class="block py-2 px-4 rounded hover:bg-white/10 transition duration-200">Venue Sections</a>
+            <a href="{{ url('admin/singers') }}" class="block py-2 px-4 rounded hover:bg-white/10 transition duration-200">Singers</a>
+            <a href="" class="block py-2 px-4 rounded hover:bg-white/10 transition duration-200">Genres</a>
             <a href="" class="block py-2 px-4 rounded hover:bg-white/10 transition duration-200">Concerts</a>
             <a href="" class="block py-2 px-4 rounded hover:bg-white/10 transition duration-200">Tickets</a>
             <a href="" class="block py-2 px-4 rounded hover:bg-white/10 transition duration-200">Bookings</a>

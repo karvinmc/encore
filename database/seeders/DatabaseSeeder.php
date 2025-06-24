@@ -58,7 +58,6 @@ class DatabaseSeeder extends Seeder
           'venue_id' => $venue_id,
           'name' => $type,
           'type' => $sectionType,
-          'capacity' => rand(3000, 15000),
           'created_at' => now(),
           'updated_at' => now(),
         ]);
